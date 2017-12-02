@@ -2,15 +2,16 @@
 
 const add = ( a, b ) => a + b
 const desc = ( a, b ) => b - a
+const unique = arr => [ ...new Set( arr ) ]
 const diff = row => Math.max( ...row ) - Math.min( ...row )
 const divDiff = row => {
-  const sorted = [ ...row ].sort( desc )
+  const sorted = unique( row ).sort( desc )
   return findQuotient( sorted )
 } 
 const findQuotient = ( [ dividend, ...divisors ] ) => {
   if ( !divisors || !divisors.length ) throw 'Insanity'
-  const dividable = divisor => !( dividend % divisor )
-  const divisor = divisors.find( dividable )
+  const divisible = divisor => !( dividend % divisor )
+  const divisor = divisors.find( divisible )
   return divisor ? dividend / divisor : findQuotient( divisors )
 }
 const toNumbers = rows => {
