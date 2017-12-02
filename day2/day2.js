@@ -11,10 +11,7 @@ const findQuotient = ( [ dividend, ...divisors ] ) => {
   if ( !divisors || !divisors.length ) throw 'Insanity'
   const dividable = divisor => !( dividend % divisor )
   const divisor = divisors.find( dividable )
-  if ( divisor )
-    return dividend / divisor
-  else
-    return findQuotient( divisors )
+  return divisor ? dividend / divisor : findQuotient( divisors )
 }
 const toNumbers = rows => {
   return rows.split( /\n/ )
