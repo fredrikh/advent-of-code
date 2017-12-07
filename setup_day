@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+dirName=day$1
+codeFile=day$1.js
+testFile=day$1.test.js
+
+mkdir -p $dirName
+
+if [ ! -e $dirName/$codeFile ]; then
+  echo >>  $dirName/$codeFile
+fi 
+if [ ! -e $dirName/$testFile ]; then
+  echo >>  $dirName/$testFile
+fi
+if [ ! -e $dirName/app.js ]; then
+  echo >>  $dirName/app.js
+fi 
+if [ ! -e $dirName/input.txt ]; then
+  echo >>  $dirName/input.txt
+fi 
+
+
+
