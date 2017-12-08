@@ -1,8 +1,5 @@
-'use strict'
-
 const parseLine = line => {
-  const rx = /(\S+) (inc|dec) (-?\d+) if (\S+) ([!>=<]+) (-?\d+)/
-  const [ , reg, op, val, condReg, comp, condVal ] = rx.exec( line )    
+  const [ reg, op, val, _, condReg, comp, condVal ] = line.split( /\s/ )    
   return { regName: reg, op: op, val: Number( val ), condReg: condReg, comp: comp, condVal: Number( condVal ) }
 }
 
@@ -29,8 +26,6 @@ const execute = register => instruction => {
   }
   return register[ regName ]
 }
-
-const sum = ( x, y ) => x + y
 
 const run = input => {
   const instructions = input.map( parseLine )
