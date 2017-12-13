@@ -45,7 +45,7 @@ const hash = input => {
     asciiCodes = stringToAsciiCodes( input ).concat( [ 17, 31, 73, 47, 23 ] ),
     sparseHash = knot( asciiCodes, 64 ),
     denseHash = []
-  for ( let i = 0; i < 256; i += 16 ) denseHash.push( xor( sparseHash.slice( i, ( i + 1 ) * 16 ) ) )
+  for ( let i = 0; i < 256; i += 16 ) denseHash.push( xor( sparseHash.slice( i, i + 16 ) ) )
   
   return denseHash.map( hex ).join( '' )
 }
