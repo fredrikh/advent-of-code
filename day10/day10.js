@@ -35,19 +35,21 @@ const checksum = ( input ) => {
   const list = knot( input, 1 )
   return list[ 0 ] * list[ 1 ]
 }
-
+const pad = n => s => '0'.repeat( n - s.length ) + s
 const hash = input => {
   const 
     xor = block => block.reduce( ( acc, b ) => acc ^= b ),
     stringToAsciiCodes = s => [ ...s ].map( c => c.charCodeAt( 0 ) ),
-    hex = n => ( n ).toString( 16 )  
+    hex = n => pad( 2 )( ( n ).toString( 16 ) )
   const 
     asciiCodes = stringToAsciiCodes( input ).concat( [ 17, 31, 73, 47, 23 ] ),
     sparseHash = knot( asciiCodes, 64 ),
     denseHash = []
   for ( let i = 0; i < 256; i += 16 ) denseHash.push( xor( sparseHash.slice( i, i + 16 ) ) )
   
-  return denseHash.map( hex ).join( '' )
+  const s = denseHash.map( hex ).join( '' )
+
+  return s
 }
 
 module.exports = { checksum, hash }
