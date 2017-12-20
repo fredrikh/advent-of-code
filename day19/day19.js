@@ -1,7 +1,7 @@
 const walk = pipes => { 
   const 
-    validMove = ( [ x, y ] ) => x >= 0 && x < pipes[ 0 ].length && y >= 0 && y < pipes.length && pipes[ y ][ x ] !== ' ',
-    turns = dir => [  t  = [ ...dir ].reverse(), t.map( x => -x ) ],
+    validMove = ( [ x, y ] ) => x >= 0 && x < pipes[ 0 ].length && y >= 0 && y < pipes.length && pipes[ y ][ x ] !== ' ',    
+    turns = ( [ x, y ] ) => [ [ y, x ], [ -y, -x ] ],
     add = ( [ x0, y0 ], [ x1, y1 ] ) => [ x0 + x1, y0 + y1 ],
     get = ( [ x, y ] ) => pipes[ y ][ x ],
     isLetter = c => /[a-z]/i.test( c ) 
