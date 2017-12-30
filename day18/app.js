@@ -4,4 +4,5 @@ const fs = require( 'fs' )
 const program = fs.readFileSync( __dirname + '/input.txt' ).toString().split( /\n/ )
 
 console.log( day18.runA( program ) )
+console.log( day18.runB( program ) )
 
