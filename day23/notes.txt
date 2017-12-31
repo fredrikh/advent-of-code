@@ -1,0 +1,32 @@
+set b 84      b = 84
+set c b       c = b
+jnz a 2       if !a
+jnz 1 5         
+mul b 1       b *= v
+sub b -10     b += 10
+set c b       c = b         -
+sub c -2      c += 2        c = b + 2
+set f 1       f = 1
+set d 2       d = 2
+set e 2       e = 2
+set g d       g = d         -           for ( e = 2 to b )
+mul g e       g *= e        g = d * e       -
+sub g b       g -= b                  g = d * e - b
+jnz g 2       if !g         is composite?
+set f 0         f = 0
+sub e -1      e += 1
+set g e       g = e
+sub g b       g -= b        g = e - b
+jnz g -8      if g goto 12              loop for
+sub d -1      d += 1
+set g d       g = d 
+sub g b       g -= b        g = d - b
+jnz g -13     if g goto 11              loop for
+jnz f 2       if !f
+sub h -1        h += 1
+set g b       g = b
+sub g c       g -= c        g = b - c
+jnz g 2       if !g
+jnz 1 3         exit program
+sub b -17     b += 17
+jnz 1 -23     loop 9
